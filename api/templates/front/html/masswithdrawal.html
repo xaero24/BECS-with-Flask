@@ -12,24 +12,20 @@
 
 <body>
     <div id="header">
-        <b>Welcome, {{message}}!</b>
-        <button class="menu">send blood</button>
-        <button class="menu">get blood</button>
-        <button class="menu">MCI report</button>
-        <button class="logout">log out</button>
+        <a href="getblood.html" class="menu">|   get blood   |</a>
+        <a href="sendblood.html" class="menu">|   send blood   |</a>
+        <a href="masswithdrawal.html" class="menu">|   MCI   |</a>
     </div>
     <div id="body">
-        <div>
-            temporary links <br>
-            <a href="signup.html">signup</a> <br>
-            <a href="login.html">login</a> <br>
-            <a href="getblood.html">getblood</a> <br>
-            <a href="sendblood.html">sendblood</a> <br>
-            <a href="masswithdrawal.html">mci</a> <br>
+        <div id="mainp">
+            <form action="" name="mci">
+                Patients' blood groups: <br> O+: <input type="number" name="op" id="op" placeholder="0"> <br> A+: <input type="number" name="ap" id="ap" placeholder="0"> <br> B+: <input type="number" name="bp" id="bp" placeholder="0"> <br> AB+:
+                <input type="number" name="abp" id="abp" placeholder="0"> <br> O-: <input type="number" name="om" id="om" placeholder="0"> <br> A-: <input type="number" name="am" id="am" placeholder="0"> <br> B-: <input type="number" name="bm" id="bm"
+                    placeholder="0"> <br> AB-:
+                <input type="number" name="abm" id="abm" placeholder="0"> <br>
+                <button>Request blood packs</button>
+            </form>
         </div>
-        Number: <input id="num" type="text" /><br>
-        <button onclick="square(document.getElementById('num').value)">square me</button>
-        <p id="sq"></p>
     </div>
     <div id="footer">
         <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>

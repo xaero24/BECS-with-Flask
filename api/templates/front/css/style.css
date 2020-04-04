@@ -1,13 +1,16 @@
 body {
     margin: 0;
-}
-
-.menu {
-    background-color: transparent;
     font-size: 18pt;
 }
 
-.logout {
+a {
+    font-size: 18pt;
+    color: white;
+    text-decoration: none;
+    padding-left: 10pt;
+}
+
+.menu {
     background-color: transparent;
     font-size: 18pt;
     position: relative;
@@ -15,9 +18,10 @@ body {
     right: 4pt;
 }
 
-.mainmenu {
-    text-align: center;
-    font-size: 28pt;
+.menu:hover {
+    background-color: transparent;
+    font-size: 18pt;
+    color: red;
 }
 
 #header {
@@ -37,4 +41,8 @@ body {
     left: 0;
     padding-top: 4pt;
     padding-bottom: 4pt;
+}
+
+#body {
+    text-align: center;
 }
