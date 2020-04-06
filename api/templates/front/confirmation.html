@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Confirmed</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="header">
+        <b style="color: white;">&nbsp;BECS 2020</b>
+        <a href="masswithdrawal.html" class="menu">|   MCI   |</a>
+        <a href="sendblood.html" class="menu">|   send blood   |</a>
+        <a href="getblood.html" class="menu">|   get blood   |</a>
+    </div>
+    <div id="body">
+        <br><br><br> {{message}}
+    </div>
+    <div id="footer">
+        <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Deposit</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="header">
+        <b style="color: white;">&nbsp;BECS 2020</b>
+        <a href="masswithdrawal.html" class="menu">|   MCI   |</a>
+        <a href="sendblood.html" class="menu">|   send blood   |</a>
+        <a href="getblood.html" class="menu">|   get blood   |</a>
+    </div>
+    <div id="body">
+        <br><br><br>
+        <div id="mainp">
+            <form action="http://127.0.0.1:5000/add_portion" method="POST" name="deposit">
+                <table>
+                    <tr>
+                        <td colspan="2">Submit a blood pack</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr class="tablecontent">
+                        <td>Donor's blood group:</td>
+                        <td>
+                            <select name="bgr" id="bgr">
+                                <option value="O">O</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="tablecontent">
+                        <td>Select Rh factor:</td>
+                        <td>
+                            <select name="rh" id="rh">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit">Submit blood pack</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>
+    </div>
+</body>
+
+</html>
