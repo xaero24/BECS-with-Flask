@@ -8,6 +8,10 @@ Works with a Docker container, to be stored in a server, probably a free GCP acc
 $ Docker build -t becs:latest .
 $ Docker run becs
 ```
+After that, the URL for the blood pack submission is:
+```
+http://0.0.0.0:5000/sendblood.html
+```
 
 ## Notes:
 Some placehoder functions are kept in the server for future development. Now they are of no use but later will have part in the blood packs distribution.
