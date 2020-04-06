@@ -17,12 +17,12 @@ http://0.0.0.0:5000/sendblood.html
 Some placehoder functions are kept in the server for future development. Now they are of no use but later will have part in the blood packs distribution.
 
 ## TODO:
-01. [] Add user log in, sign up and log out options.
-02. [] Add safe (encrypted) data transfer.
-03. [] Implement NGINX server instead of flask redirections.
-04. [] Create better layout of components in pages.
-05. [] Add time stamps.
-06. [] Add better checks and correct responses for various cases.
-07. [] Maybe switch to PHP components?
-08. [] Add table page with all blood types and pack counts.
-09. [] Add action logging and suitable page.
+1. [ ] Add user log in, sign up and log out options.
+2. [ ] Add safe (encrypted) data transfer.
+3. [ ] Implement NGINX server instead of flask redirections.
+4. [ ] Create better layout of components in pages.
+5. [ ] Add time stamps.
+6. [ ] Add better checks and correct responses for various cases.
+7. [ ] Maybe switch to PHP components?
+8. [ ] Add table page with all blood types and pack counts.
+9. [ ] Add action logging and suitable page.
