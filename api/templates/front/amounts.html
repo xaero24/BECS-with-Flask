@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Deposit</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="header">
+        <b style="color: white;">&nbsp;BECS 2020</b>
+        <a href="masswithdrawal.html" class="menu">|   MCI   |</a>
+        <a href="sendblood.html" class="menu">|   send blood   |</a>
+        <a href="getblood.html" class="menu">|   get blood   |</a>
+        <a href="amounts.html" class="menu">|   amounts   |</a>
+    </div>
+    <div id="body">
+        <br><br><br>
+        <div id="mainp">
+            <table>
+                <tr>
+                    <td colspan="2">Blood bank inventory</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>A+</td>
+                    <td>
+                        {{ message[0] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>O+</td>
+                    <td>
+                        {{ message[1] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>B+</td>
+                    <td>
+                        {{ message[2] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>AB+</td>
+                    <td>
+                        {{ message[3] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>A-</td>
+                    <td>
+                        {{ message[4] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>O-</td>
+                    <td>
+                        {{ message[5] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>B-</td>
+                    <td>
+                        {{ message[6] }}
+                    </td>
+                </tr>
+                <tr class="tablecontent">
+                    <td>AB-</td>
+                    <td>
+                        {{ message[7] }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="footer">
+        <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>
+    </div>
+</body>
+
+</html>

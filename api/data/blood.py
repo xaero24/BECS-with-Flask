@@ -24,17 +24,6 @@ class BECS:
         'AB-': ['O-', 'A-', 'B-', 'AB-']
     }
 
-    givesToDict = {
-        'A+': ['A+', 'AB+'],
-        'O+': ['O+', 'A+', 'B+', 'AB+'],
-        'B+': ['B+', 'AB+'],
-        'AB+': ['AB+'],
-        'A-': ['A+', 'A-', 'AB+', 'AB-'],
-        'O-': ['O+', 'A+', 'B+', 'AB+', 'O-', 'A-', 'B-', 'AB-'],
-        'B-': ['B+', 'B-', 'AB+', 'AB-'],
-        'AB-': ['AB+', 'AB-']
-    }
-
     bloodTypeDistribution = {
         'A+': 34,
         'O+': 32,
@@ -45,12 +34,6 @@ class BECS:
         'B-': 2,
         'AB-': 1
     }
-
-    def checkBestBefore(this, pack):
-        """
-        Whole blood can be stored for 21 to 35 days in fridges, depending on the method of blood storage. We take the more strict 21 days.
-        """
-        pass
 
     def getMostSuitableDonors(this):
         suitability = []
@@ -68,12 +51,12 @@ class BECS:
 
     def massWithdrawal(this, amounts):
         taken = {
-            'O+': 0,
             'A+': 0,
+            'O+': 0,
             'B+': 0,
             'AB+': 0,
-            'O-': 0,
             'A-': 0,
+            'O-': 0,
             'B-': 0,
             'AB-': 0
         }
@@ -104,3 +87,9 @@ class BECS:
             return (chosenBloodType, this.packsCount[chosenBloodType])
         else:
             return ("None", 0)
+
+    def getPackCounts(this):
+        res = []
+        for x in this.packsCount.values():
+            res.append(x)
+        return res

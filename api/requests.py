@@ -24,19 +24,22 @@ def getPortion():
 
 @becs.route('/get_portions', methods=['POST'])
 def getPortions():
-    op = ('O+', int(request.form['op']))
     ap = ('A+', int(request.form['ap']))
+    op = ('O+', int(request.form['op']))
     bp = ('B+', int(request.form['bp']))
     abp = ('AB+', int(request.form['abp']))
-    om = ('O-', int(request.form['om']))
     am = ('A-', int(request.form['am']))
+    om = ('O-', int(request.form['om']))
     bm = ('B-', int(request.form['bm']))
     abm = ('AB-', int(request.form['abm']))
-    data = (op, ap, bp, abp, om ,am ,bm ,abm)
+    data = (ap, op, bp, abp, am ,om ,bm ,abm)
     res = bloodbank.massWithdrawal(data)
     msg = f'Successfully pulled the following packs and amounts: {res}.'
     return render_template('front/confirmation.html', message=msg)
 
 @becs.route('/<page>', methods=['GET', 'POST'])
 def redirect(page):
-    return render_template(f'front/{page}')
+    if page == 'amounts.html':
+        return render_template(f'front/{page}', message=bloodbank.getPackCounts())
+    else:
+        return render_template(f'front/{page}')
