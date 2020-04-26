@@ -1,17 +1,21 @@
 # BECS-with-Flask
-A simple BECS (Blood Establishment Computer Software) with a Flask backend and HTML front. Righ now the software is running on a ocal machine and can be a bit buggy. No dockers are imlemented due to shortage of time and various errors.
+A simple BECS (Blood Establishment Computer Software) with a Flask backend and HTML front. The BECS is initialized with a basic amount of blood packs and is updated based on the usage of thesse packs.
 
-Additionally, the BECS is initialized with a basic amount of blood packs and is updated based on the usage of thesse packs.
-
-Will work in the future with a Docker container, to be stored in a server, probably a free GCP account.
+Works with a Docker container, stored in a free GCP account.
 
 ## How to run:
 ```
-$ ./run_becs.sh
+$ docker build -t becs:latest .
+$ docker run becs:latest
 ```
-After that, the URL for the blood pack submission is:
+After that, the URL for the website (and the inventory) is:
 ```
-http://127.0.0.1:5000/sendblood.html
+http://127.0.0.1:5000/
+```
+
+For the external, already running website you can visit:
+```
+http://34.89.179.147:5000/
 ```
 
 ## TODO:
@@ -24,8 +28,8 @@ http://127.0.0.1:5000/sendblood.html
 7. [ ] Maybe switch to PHP components?
 8. [X] Add table page with all blood types and pack counts.
 9. [ ] Add action logging and suitable page.
-10. [ ] Dockerize
+10. [X] Dockerize
 11. [ ] Make prints more betterer.
 
 
-Current BECS version: 0.20.4
+Current BECS version: 0.20.4.5
