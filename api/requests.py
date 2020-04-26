@@ -44,7 +44,9 @@ def redirect(page):
     else:
         return render_template(f'front/{page}')
 
-
 @becs.route('/', methods=['GET', 'POST'])
 def redirectToHome():
     return redirect('amounts.html')
+
+if __name__ == "__main__":
+    becs.run(debug=True, host='0.0.0.0', port='8080')

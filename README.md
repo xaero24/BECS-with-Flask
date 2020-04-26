@@ -18,7 +18,7 @@ http://127.0.0.1:5000/sendblood.html
 1. [ ] Add user log in, sign up and log out options.
 2. [ ] Add safe (encrypted) data transfer.
 3. [ ] Implement NGINX server instead of flask redirects.
-4. [ ] Create better layout of components in pages.
+4. [X] Create better layout of components in pages.
 5. [ ] Add time stamps to blood packs.
 6. [ ] Add better checks and correct responses for various cases.
 7. [ ] Maybe switch to PHP components?
