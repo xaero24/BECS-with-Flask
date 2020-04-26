@@ -49,4 +49,4 @@ def redirectToHome():
     return redirect('amounts.html')
 
 if __name__ == "__main__":
-    becs.run(debug=True, host='0.0.0.0', port='5000')
+    becs.run(debug=True, port='5000')
