@@ -43,3 +43,8 @@ def redirect(page):
         return render_template(f'front/{page}', message=bloodbank.getPackCounts())
     else:
         return render_template(f'front/{page}')
+
+
+@becs.route('/', methods=['GET', 'POST'])
+def redirectToHome():
+    return redirect('amounts.html')
