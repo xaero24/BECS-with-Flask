@@ -1,5 +1,9 @@
 # BECS-with-Flask
-A simple BECS (Blood Establishment Computer Software) with a Flask backend and HTML front. The BECS is initialized with a basic amount of blood packs and is updated based on the usage of thesse packs.
+A simple BECS (Blood Establishment Computer Software) with a Flask backend and HTML front. The BECS is initialized with a basic amount of blood packs and is updated based on the usage of thesse packs. Tested on Ubuntu 20.04 machine so no known support for other systems or machines. A prerequisite is having a docker installation on the machine, if you don’t know or don’t have it you can run:
+
+```
+$ sudo apt install docker.io
+```
 
 Most of the work is done by using flask's redirecting functions, and some features were implemented according to these limitations. Further development might include migrating to an NGINX server and using flask solely as an API.
 
@@ -10,11 +14,11 @@ The web app works with a Docker container, also a ready-to-go version is stored 
 ## How to run:
 ```
 $ docker build -t becs:latest .
-$ docker run becs:latest
+$ docker run -p 5000:5000 becs:latest
 ```
 After that, the URL for the website (and the inventory) is:
 ```
-http://127.0.0.1:5000/
+http://0.0.0.0:5000/
 ```
 
 For the external, already running website you can visit:
@@ -23,17 +27,18 @@ http://34.89.179.147:5000/
 ```
 
 ## TODO:
-1. [ ] Add user log in, sign up and log out options.
-2. [ ] Add safe (encrypted) data transfer.
-3. [ ] Implement NGINX server instead of flask redirects.
-4. [X] Create better layout of components in pages.
-5. [ ] Add time stamps to blood packs.
-6. [ ] Add better checks and correct responses for various cases.
-7. [ ] Maybe switch to PHP components?
-8. [X] Add table page with all blood types and pack counts.
-9. [ ] Add action logging and suitable page.
-10. [X] Dockerize
-11. [ ] Make prints more betterer.
+- [ ] Add user log in, sign up and log out options.
+- [ ] Add safe (encrypted) data transfer.
+- [ ] Implement NGINX server instead of flask redirects.
+- [ ] Move to external database.
+- [X] Create better layout of components in pages.
+- [ ] Add time stamps to blood packs.
+- [ ] Add better checks and correct responses for various cases.
+- [ ] Maybe switch to PHP components?
+- [X] Add table page with all blood types and pack counts.
+- [ ] Add action logging and suitable page.
+- [X] Dockerize
+- [ ] Make prints more betterer.
 
 
 Current BECS version: 0.20.4.5
