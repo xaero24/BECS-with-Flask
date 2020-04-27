@@ -1,7 +1,11 @@
 # BECS-with-Flask
 A simple BECS (Blood Establishment Computer Software) with a Flask backend and HTML front. The BECS is initialized with a basic amount of blood packs and is updated based on the usage of thesse packs.
 
-Works with a Docker container, stored in a free GCP account.
+Most of the work is done by using flask's redirecting functions, and some features were implemented according to these limitations. Further development might include migrating to an NGINX server and using flask solely as an API.
+
+The data is stored in a local object derived from a python file. The file is initialized with some data - in a real scenario the data is non-existent. Right now the object has only the counts of each blood pack and methods for basic extraction parameters. Future work will include expansion of the data to include individual blood packs with submission dates and expiration will be taken in account. Additionaly, the data will be migrated to a remote SQL or noSQL server.
+
+The web app works with a Docker container, also a ready-to-go version is stored in a free GCP account and any future development will be updated there.
 
 ## How to run:
 ```
