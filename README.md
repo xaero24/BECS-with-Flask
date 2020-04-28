@@ -12,6 +12,7 @@ The data is stored in a local object derived from a python file. The file is ini
 The web app works with a Docker container, also a ready-to-go version is stored in a free GCP account and any future development will be updated there.
 
 ## How to run:
+In the project root open the terminal and run:
 ```
 $ docker build -t becs:latest .
 $ docker run -p 5000:5000 becs:latest
