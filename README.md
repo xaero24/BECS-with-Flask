@@ -18,7 +18,7 @@ api/templates/front/getblood.html
 api/templates/front/sendblood.html
 api/templates/front/masswithdrawal.html
 
-Then, run in the terminal:
+Then, in the project root open the terminal and run:
 
 ```
 $ docker build -t becs:latest .
