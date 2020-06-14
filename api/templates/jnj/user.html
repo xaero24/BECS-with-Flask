@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>MCI</title>
+    <title>Welcome</title>
+
     <script>
         // Automatic Slideshow - change image every 4 seconds
         var myIndex = 0;
@@ -54,11 +55,12 @@
 
             <a href="#" class="w3-bar-item w3-padding-large">BECS</a>
             <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MCI</a>
-            <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">send blood</a>
-            <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">get blood</a>
-            <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">amounts</a>
+            <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Send Blood</a>
+            <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Get Blood</a>
+            <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Amounts</a>
         </div>
     </div>
+
 
     <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
         <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MCI</a>
@@ -68,72 +70,12 @@
     </div>
 
     <div id="body">
+        <br><br><br>
+        <b>{{ user }}</b><br><br>
+
         <div id="mainp">
-            <br><br><br>
-            <form action="http://localhost:5000/api/{{user}}/get_portions" method="POST" name="mci">
-                <table>
-                    <tr>
-                        <td colspan="2">Request MCI blood withdrawal</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">&nbsp;</td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>A+</td>
-                        <td>
-                            <input type="number" name="ap" id="ap" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>O+</td>
-                        <td>
-                            <input type="number" name="op" id="op" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>B+</td>
-                        <td>
-                            <input type="number" name="bp" id="bp" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>AB+</td>
-                        <td>
-                            <input type="number" name="abp" id="abp" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>A-</td>
-                        <td>
-                            <input type="number" name="am" id="am" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>O-</td>
-                        <td>
-                            <input type="number" name="om" id="om" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>B-</td>
-                        <td>
-                            <input type="number" name="bm" id="bm" value="0">
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>AB-</td>
-                        <td>
-                            <input type="number" name="abm" id="abm" value="0">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit">Request blood packs</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
         </div>
+
     </div>
     <div id="footer">
         <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>
