@@ -46,7 +46,7 @@ http://34.89.179.147:5000/
 - [X] Add table page with all blood types and pack counts.
 - [ ] Add action logging and suitable page.
 - [X] Dockerize
-- [ ] Make prints more betterer.
+- [X] Make prints more betterer.
 
 
-Current BECS version: 0.20.4.5
+Current BECS version: 0.20.6.16

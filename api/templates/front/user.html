@@ -53,27 +53,58 @@
         <div class="w3-bar w3-black w3-card">
             <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Menu"><i class="fa fa-bars"></i></a>
 
-            <a href="#" class="w3-bar-item w3-padding-large">BECS</a>
+            <b style="font-size: 18pt; color: white; text-decoration: none; padding-left: 10pt;" class="w3-bar-item w3-padding-large">BECS</b>
             <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MCI</a>
             <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Send Blood</a>
             <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Get Blood</a>
             <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Amounts</a>
+            <a href="user.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">My Profile</a>
         </div>
     </div>
 
 
     <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
         <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MCI</a>
-        <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">send blood</a>
-        <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">get blood</a>
-        <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">amounts</a>
+        <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Send Blood</a>
+        <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Get Blood</a>
+        <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Amounts</a>
+        <a href="user.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">My Profile</a>
     </div>
 
     <div id="body">
-        <br><br><br>
-        <b>{{ user }}</b><br><br>
+        <br><br><br><br>
+        <b style="font-size: 24pt;">Welcome {{ data['title']+' '+data['last_name'] }}</b>
+        <br><br>
 
         <div id="mainp">
+            <form action="http://localhost:5000/api/{{user}}/update">
+                <input type="text" name="fname" placeholder="{{ data['first_name'] }}"><br>
+                <input type="text" name="lname" placeholder="{{ data['last_name'] }}"><br>
+                <input type="text" name="id" placeholder="{{ data['id'] }}"><br>
+                <input type="text" name="title" placeholder="{{ data['title'] }}"><br>
+                <input type="text" name="pass" placeholder="New password"><br>
+                <input type="text" name="email" placeholder="{{ data['email'] }}"><br>
+                <p style="font-size: 16pt;">status: {{ data['status'] }}</p>
+                <button type="submit">Update deails</button>
+            </form>
+            {% if data['status']=='admin' %}
+            <br><br>
+            <form action="http://localhost:5000/api/{{user}}/make_admin">
+                Make administrator: <br>
+                <input type="text" name="adminize" placeholder="ID"> <br>
+                <button type="submit">Update</button>
+            </form>
+            <br>
+            <form action="http://localhost:5000/api/{{user}}/make_user">
+                Make user: <br>
+                <input type="text" name="userize" placeholder="ID"> <br>
+                <button type="submit">Update</button>
+            </form>
+            {% endif %}
+            <br><br>
+            <form action="http://localhost:5000/api/{{user}}/logout">
+                <button type="submit">Log out</button>
+            </form>
         </div>
 
     </div>

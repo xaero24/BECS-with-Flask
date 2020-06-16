@@ -51,85 +51,30 @@
 <body>
     <div class="w3-top">
         <div class="w3-bar w3-black w3-card">
-            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Menu"><i class="fa fa-bars"></i></a>
-
-            <a href="#" class="w3-bar-item w3-padding-large">BECS</a>
-            <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MCI</a>
-            <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Send Blood</a>
-            <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Get Blood</a>
-            <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Amounts</a>
-            <a href="user.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">My Profile</a>
+            <b style="font-size: 18pt; color: white; text-decoration: none; padding-left: 10pt;" class="w3-bar-item w3-padding-large">BECS</b>
         </div>
     </div>
 
-    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-        <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MCI</a>
-        <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Send BSlood</a>
-        <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Get blood</a>
-        <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Amounts</a>
-        <a href="user.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">My Profile</a>
-    </div>
 
     <div id="body">
         <br><br><br>
-        <b>Welcome to BECS 2020</b><br><br>
+        <h1>
+            <b>Welcome to BECS 2020</b>
+        </h1><br><br>
 
         <div id="mainp">
-            <table>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>
-                                    New user
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="uname" placeholder="User name">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="upass" placeholder="Password">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button type="submit">Sign up</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-
-                    <td style="width: 20px;"></td>
-
-                    <td>
-                        <table>
-                            <tr>
-                                <td>
-                                    Existing user
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="uname" placeholder="User name">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id="upass" placeholder="Password">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button type="submit">Log in</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+            <p>
+                {{message}}
+            </p>
+            <form action="http://localhost:5000/api/login" method="POST">
+                <input type="text" id="id" name="id" placeholder="ID"> <br>
+                <input type="text" id="pass" name="pass" placeholder="Password"> <br><br>
+                <button type="submit">Log in</button>
+            </form>
+            <br>
+            <a href="signup.html" style="font-size: 16px; color: blue; padding-left: 0pt;">
+                Sign Up
+            </a>
         </div>
 
     </div>
