@@ -1,8 +1,8 @@
 FROM python:3.7-slim-buster
 
-COPY . /api
+COPY . /becs
 
-WORKDIR /api
+WORKDIR /becs
 
 RUN pip3 install --upgrade pip
 
