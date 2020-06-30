@@ -89,7 +89,7 @@ def isAdmin(user):
 
 #Logging function
 def logAction(date, time, user, action):
-    logFile = f"{becs.root_path}/logfiles/log_{date}.txt"
+    logFile = f"api/logfiles/log_{date}.txt"
     if os.path.exists(logFile):
         a_w = 'a+'
     else:
