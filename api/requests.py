@@ -8,7 +8,6 @@ import os
 becs = Flask(__name__)
 bloodbank = becsClass.BECS()
 file = "api/data/user.json"
-logDir = "api/logfiles/"
 
 #User login helper function
 def loggedIn(userName):
@@ -90,11 +89,11 @@ def isAdmin(user):
 
 #Logging function
 def logAction(date, time, user, action):
-    logFile = logDir + f"log_{date}.txt"
+    logFile = f"{becs.root_path}/logfiles/log_{date}.txt"
     if os.path.exists(logFile):
-        a_w = 'a'
+        a_w = 'a+'
     else:
-        a_w = 'w'
+        a_w = 'w+'
     logLine = f"{time}: {user} - {action}\n"
     with open(logFile, a_w) as log:
         log.write(logLine)
