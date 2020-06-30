@@ -1,0 +1,43 @@
+22-55-26: 310514997 - Redirected to page user.html
+22-55-29: 310514997 - Redirected to page logexport.html
+22-55-35: 310514997 - Downloaded logs from date // to date //
+22-56-51: 310514997 - Redirected to page logexport.html
+22-56-52: 310514997 - Downloaded logs from date // to date //
+23-01-19: 310514997 - Redirected to page getblood.html
+23-01-19: 310514997 - Redirected to page amounts.html
+23-01-19: 310514997 - Redirected to page sendblood.html
+23-01-20: 310514997 - Redirected to page sendblood.html
+23-01-21: 310514997 - Redirected to page masswithdrawal.html
+23-01-21: 310514997 - Redirected to page getblood.html
+23-01-22: 310514997 - Redirected to page sendblood.html
+23-01-22: 310514997 - Redirected to page amounts.html
+23-01-23: 310514997 - Redirected to page user.html
+23-01-23: 310514997 - Redirected to page user.html
+23-01-24: 310514997 - Redirected to page user.html
+23-01-24: 310514997 - Redirected to page user.html
+23-01-24: 310514997 - Redirected to page user.html
+23-01-24: 310514997 - Redirected to page user.html
+23-01-25: 310514997 - Redirected to page user.html
+23-01-26: 310514997 - Redirected to page amounts.html
+23-01-26: 310514997 - Redirected to page getblood.html
+23-01-27: 310514997 - Redirected to page sendblood.html
+23-01-27: 310514997 - Redirected to page masswithdrawal.html
+23-01-38: 310514997 - Redirected to page user.html
+23-01-40: 310514997 - Redirected to page logexport.html
+23-12-12: 310514997 - Redirected to page amounts.html
+23-12-13: 310514997 - Redirected to page user.html
+23-12-15: 310514997 - Redirected to page logexport.html
+23-14-59: 310514997 - Redirected to page user.html
+23-15-02: 310514997 - Redirected to page logexport.html
+23-15-22: 310514997 - Downloaded logs from date 30/06/2020
+23-15-35: 310514997 - Downloaded logs from date 30/06/2020
+23-15-41: 310514997 - Failed request for logs from date 30/03/2020 - no logs found
+23-20-26: 310514997 - Redirected to page logexport.html
+23-20-33: 310514997 - Downloaded logs from date 30/06/2020
+23-21-06: 310514997 - Redirected to page logexport.html
+23-21-10: 310514997 - Downloaded logs from date 30/06/2020
+23-21-56: 310514997 - Redirected to page user.html
+23-21-58: 310514997 - Redirected to page logexport.html
+23-22-03: 310514997 - Downloaded logs from date 30/06/2020
+23-22-06: 310514997 - Redirected to page getblood.html
+23-22-07: 310514997 - Redirected to page amounts.html

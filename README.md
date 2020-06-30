@@ -11,6 +11,19 @@ The data is stored in a local object derived from a python file. The file is ini
 
 The web app works with a Docker container, also a ready-to-go version is stored in a free GCP account and any future development will be updated there.
 
+## UPDATES:
+30/06/2020:
+- Added support for multiple user privileges - admin, user, student
+- Added logging functionality
+- Added log file download - for now by a single date, spanned downloads will come later
+- Added checks for user actions, ESPECIALLY in API endpoints
+- Added admin functions - up/downgrade users, delete users, etc
+- Responsiveness added to web pages and mobile display should be better
+- Added integration of W3.CSS (thus the responsiveness)
+- Solved a few linking and routing issues
+- Added checks for log-in times and last actions, and checks for valid time since last action - more than 24 hours since last action is considered logged out
+
+
 ## How to run:
 Since this web app is located on a remote server, you will have to manually change the IP addresses to 127.0.0.1:5000, located in the action attribute of the form tags in the following files:
 
@@ -35,18 +48,19 @@ http://34.89.179.147:5000/
 ```
 
 ## TODO:
-- [ ] Add user log in, sign up and log out options.
+- [X] Add user log in, sign up and log out options.
 - [ ] Add safe (encrypted) data transfer.
 - [ ] Implement NGINX server instead of flask redirects.
 - [ ] Move to external database.
 - [X] Create better layout of components in pages.
 - [ ] Add time stamps to blood packs.
-- [ ] Add better checks and correct responses for various cases.
+- [X] Add better checks and correct responses for various cases.
 - [ ] Maybe switch to PHP components?
 - [X] Add table page with all blood types and pack counts.
-- [ ] Add action logging and suitable page.
+- [X] Add action logging and suitable page.
 - [X] Dockerize
 - [X] Make prints more betterer.
+- [ ] Add log file downloads for a time span instead of a single date
 
 
-Current BECS version: 0.20.6.16
+Current BECS version: 0.20.6.30

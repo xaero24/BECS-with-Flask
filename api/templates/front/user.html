@@ -54,21 +54,21 @@
             <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Menu"><i class="fa fa-bars"></i></a>
 
             <b style="font-size: 18pt; color: white; text-decoration: none; padding-left: 10pt;" class="w3-bar-item w3-padding-large">BECS</b>
-            <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MCI</a>
-            <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Send Blood</a>
-            <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Get Blood</a>
-            <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Amounts</a>
-            <a href="user.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">My Profile</a>
+            <a href="http://localhost:5000/{{user}}/masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">MCI</a>
+            <a href="http://localhost:5000/{{user}}/sendblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Send Blood</a>
+            <a href="http://localhost:5000/{{user}}/getblood.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Get Blood</a>
+            <a href="http://localhost:5000/{{user}}/amounts.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Amounts</a>
+            <a href="http://localhost:5000/{{user}}/user.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right">My Profile</a>
         </div>
     </div>
 
 
     <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-        <a href="masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MCI</a>
-        <a href="sendblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Send Blood</a>
-        <a href="getblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Get Blood</a>
-        <a href="amounts.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Amounts</a>
-        <a href="user.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">My Profile</a>
+        <a href="http://localhost:5000/{{user}}/masswithdrawal.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MCI</a>
+        <a href="http://localhost:5000/{{user}}/sendblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Send Blood</a>
+        <a href="http://localhost:5000/{{user}}/getblood.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Get Blood</a>
+        <a href="http://localhost:5000/{{user}}/amounts.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Amounts</a>
+        <a href="http://localhost:5000/{{user}}/user.html" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">My Profile</a>
     </div>
 
     <div id="body">
@@ -77,7 +77,7 @@
         <br><br>
 
         <div id="mainp">
-            <form action="http://localhost:5000/api/{{user}}/update">
+            <form action="http://localhost:5000/api/{{user}}/update" method="POST">
                 <input type="text" name="fname" placeholder="{{ data['first_name'] }}"><br>
                 <input type="text" name="lname" placeholder="{{ data['last_name'] }}"><br>
                 <input type="text" name="id" placeholder="{{ data['id'] }}"><br>
@@ -88,27 +88,43 @@
                 <button type="submit">Update deails</button>
             </form>
             {% if data['status']=='admin' %}
-            <br><br>
-            <form action="http://localhost:5000/api/{{user}}/make_admin">
+            <hr> {{ message }} <br><br>
+            <form action="http://localhost:5000/api/{{user}}/make_admin" method="POST">
                 Make administrator: <br>
-                <input type="text" name="adminize" placeholder="ID"> <br>
+                <input type="text" name="adminize" placeholder="ID" size="9" maxlength="9">
                 <button type="submit">Update</button>
             </form>
             <br>
-            <form action="http://localhost:5000/api/{{user}}/make_user">
+            <form action="http://localhost:5000/api/{{user}}/make_user" method="POST">
                 Make user: <br>
-                <input type="text" name="userize" placeholder="ID"> <br>
+                <input type="text" name="userize" placeholder="ID" size="9" maxlength="9">
                 <button type="submit">Update</button>
             </form>
-            {% endif %}
-            <br><br>
-            <form action="http://localhost:5000/api/{{user}}/logout">
+            <br>
+            <form action="http://localhost:5000/api/{{user}}/make_student" method="POST">
+                Make student: <br>
+                <input type="text" name="studentize" placeholder="ID" size="9" maxlength="9">
+                <button type="submit">Update</button>
+            </form>
+            <br>
+            <form action="http://localhost:5000/api/{{user}}/delete_user" method="POST">
+                Delete user: <br>
+                <input type="text" name="remove" placeholder="ID" size="9" maxlength="9">
+                <button type="submit">Delete</button>
+            </form>
+            <br>
+            <a href="http://localhost:5000/{{user}}/logexport.html" style="font-size: 16px; color: blue; padding-left: 0pt;">
+                Log file exports
+            </a>
+            <hr> {% endif %}
+            <form action="http://localhost:5000/api/{{user}}/logout" method="POST">
                 <button type="submit">Log out</button>
             </form>
         </div>
 
     </div>
-    <div id="footer">
+    <br><br>
+    <div id="footer" class="w3-bottom">
         <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>
     </div>
 </body>

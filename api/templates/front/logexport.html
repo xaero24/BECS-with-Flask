@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>Withdraw</title>
+    <title>Welcome</title>
+
     <script>
         // Automatic Slideshow - change image every 4 seconds
         var myIndex = 0;
@@ -71,46 +72,28 @@
     </div>
 
     <div id="body">
-        <br><br><br>
+        <br><br><br><br>
+        <b style="font-size: 24pt;">Log exports</b>
+        <br><br>
+
         <div id="mainp">
-            <form action="http://localhost:5000/api/{{user}}/get_portion" method="POST" name="withdraw">
-                <table>
-                    <tr>
-                        <td colspan="2">Request a blood pack</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">&nbsp;</td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>Patient's blood group:</td>
-                        <td>
-                            <select name="bgr" id="bgr">
-                                <option value="O">O</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="AB">AB</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="tablecontent">
-                        <td>Select Rh factor:</td>
-                        <td>
-                            <select name="rh" id="rh">
-                                <option value="+">+</option>
-                                <option value="-">-</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit">Request blood pack</button>
-                        </td>
-                    </tr>
-                </table>
+
+            <form action="http://localhost:5000/api/{{user}}/get_logs" method="POST">
+                Log Export Date: <br>
+                <input type="text" name="s_day" placeholder="DD" size="2" maxlength="2">
+                <input type="text" name="s_month" placeholder="MM" size="2" maxlength="2">
+                <input type="text" name="s_year" placeholder="YYYY" size="4" maxlength="4">
+                <br>
+                <br>
+                <button type="submit">Export</button>
             </form>
+
+            <br><br> {{ message }}
         </div>
+
     </div>
-    <div id="footer">
+    <br><br>
+    <div id="footer" class="w3-bottom">
         <b>Not suitable for production. All rights reserved to Michael Afonin, michaaf@ac.sce.ac.il</b>
     </div>
 </body>
