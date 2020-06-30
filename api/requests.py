@@ -90,12 +90,8 @@ def isAdmin(user):
 #Logging function
 def logAction(date, time, user, action):
     logFile = becs.root_path+f"/logfiles/log_{date}.txt"
-    if os.path.exists(logFile):
-        a_w = 'a'
-    else:
-        a_w = 'w'
     logLine = f"{time}: {user} - {action}\n"
-    with open(logFile, a_w) as log:
+    with open(logFile, 'a+') as log:
         log.write(logLine)
 
 #Updating last action for the user
