@@ -89,11 +89,11 @@ def isAdmin(user):
 
 #Logging function
 def logAction(date, time, user, action):
-    logFile = f"/becs/api/logfiles/log_{date}.txt"
+    logFile = becs.root_path+f"/logfiles/log_{date}.txt"
     if os.path.exists(logFile):
-        a_w = 'a+'
+        a_w = 'a'
     else:
-        a_w = 'w+'
+        a_w = 'w'
     logLine = f"{time}: {user} - {action}\n"
     with open(logFile, a_w) as log:
         log.write(logLine)
