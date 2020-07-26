@@ -15,7 +15,7 @@ def loggedIn(userName):
         decoded = json.load(data)
     
     if userName in decoded.keys():
-        lastAction = decoded[userName]["last_action"]
+        lastAction = decoded[userName]["last_action"] 
         timeList = lastAction.split("-")
         if(elapsedBool(timeList) == True):
             if decoded[userName]["logged_in"] == True:
@@ -27,7 +27,7 @@ def loggedIn(userName):
     return False
 
 #Determination of time elapsed since last action
-def elapsedBool(times):
+def elapsedBool(times): #Change this to a simpler chaeck using datetime.time()
     currTime = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S").split("-")
     
     #Months or yeasrs apart is too much apart
@@ -137,7 +137,8 @@ def getPortion(user):
     if loggedIn(user):
         if isAdmin(user) or isUser(user):
             data = request.form["bgr"]+request.form["rh"]
-            res = bloodbank.withdrawPortion(data)
+            urgency = request.form["urg"]
+            res = bloodbank.withdrawPortion(data, urgency)
             if res[0] == "None":
                 msg = "No suitable donors were found."
             else:
