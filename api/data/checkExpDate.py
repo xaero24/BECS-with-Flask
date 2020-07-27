@@ -75,5 +75,3 @@ def run():
     #set the script to run every day at 2am
     while True:
         schedule.run_pending()
-
-check()

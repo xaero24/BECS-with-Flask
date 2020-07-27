@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, send_from_directory
 import data.blood as becsClass
+import data.checkExpDate as check
 import json
 from csv import reader, writer
 import datetime
@@ -90,7 +91,7 @@ def isAdmin(user):
 #Logging function
 def logAction(date, time, user, action):
     logFile = becs.root_path+f"/logfiles/log_{date}.txt"
-    logLine = f"{time}: {user} - {action}\n"
+    logLine = f"{time} : {user} - {action}\n"
     with open(logFile, 'a+') as log:
         log.write(logLine)
 
@@ -117,7 +118,7 @@ def addPortion(user):
 
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = f"Submitted portion {res[0]} to blood bank"
             logAction(date, time, user, action)
 
@@ -125,7 +126,7 @@ def addPortion(user):
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted submission to blood bank as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -149,7 +150,7 @@ def getPortion(user):
             
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = f"Pulled portion {res[0]} from blood bank"
             logAction(date, time, user, action)
             
@@ -157,7 +158,7 @@ def getPortion(user):
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted withdrawal from blood bank as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -188,15 +189,15 @@ def getPortions(user):
             
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
-            action = f"Pulled portions {res} to blood bank"
+            time = datetime.datetime.now().strftime("%H:%M:%S")
+            action = f"Pulled portions {res[0]} to blood bank"
             logAction(date, time, user, action)
             
             return render_template("front/confirmation.html", message=resultData, user=user)
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted MCI mass withdrawal from blood bank as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -235,7 +236,7 @@ def signup():
     
     #Logging to relevant log file
     date = datetime.datetime.now().strftime("%d-%m-%Y")
-    time = datetime.datetime.now().strftime("%H-%M-%S")
+    time = datetime.datetime.now().strftime("%H:%M:%S")
     logAction(date, time, userData["id"], action)
 
     return render_template("front/signup.html", message=res)
@@ -258,7 +259,7 @@ def login():
             
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Successfully logged in"
             logAction(date, time, user["id"], action)
 
@@ -273,7 +274,7 @@ def login():
     
     #Logging to relevant log file
     date = datetime.datetime.now().strftime("%d-%m-%Y")
-    time = datetime.datetime.now().strftime("%H-%M-%S")
+    time = datetime.datetime.now().strftime("%H:%M:%S")
     logAction(date, time, user["id"], action)
     
     return render_template("front/index.html", message=msg)
@@ -308,7 +309,7 @@ def updateDetails(user):
 
         #Logging to relevant log file
         date = datetime.datetime.now().strftime("%d-%m-%Y")
-        time = datetime.datetime.now().strftime("%H-%M-%S")
+        time = datetime.datetime.now().strftime("%H:%M:%S")
         action = "Updated self user details"
         logAction(date, time, user, action)
 
@@ -340,7 +341,7 @@ def makeAdmin(user):
 
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = f"Made user {targetUser} administrator"
             logAction(date, time, user, action)
 
@@ -348,7 +349,7 @@ def makeAdmin(user):
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted changing someone's privileges to ADMIN as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -379,7 +380,7 @@ def makeUser(user):
 
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = f"Made user {targetUser} regular user"
             logAction(date, time, user, action)
 
@@ -387,7 +388,7 @@ def makeUser(user):
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted changing someone's privileges to USER as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -418,7 +419,7 @@ def makeStudent(user):
 
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = f"Made user {targetUser} research student"
             logAction(date, time, user, action)
 
@@ -426,7 +427,7 @@ def makeStudent(user):
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted changing someone's privileges to USER as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -457,7 +458,7 @@ def deleteUser(user):
 
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = f"Deleted user {targetUser} from database"
             logAction(date, time, user, action)
 
@@ -465,7 +466,7 @@ def deleteUser(user):
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted deletig a user as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -479,19 +480,24 @@ def getLogs(user):
             logFileDir = becs.root_path+'/logfiles/'
             data = request.form
             logDate = [ data['s_day'], data['s_month'], data['s_year'] ]
+            
+            directory = os.fsencode(logFileDir)
+            files = []
+            for fname in os.listdir(directory):
+                fname_str = os.fsdecode(fname)
+                files.append(fname_str)
 
             if "" in logDate:
                 msg = "Entered bad date"
-                return render_template(f"front/logexport.html", message=msg, user=user)
-            
-            directory = os.fsencode(logFileDir)
+                return render_template(f"front/logexport.html", message=msg, user=user, data=files)
+
             for fname in os.listdir(directory):
                 fname_str = os.fsdecode(fname)
                 if fname_str == f"log_{logDate[0]}-{logDate[1]}-{logDate[2]}.txt":
                     #Logging to relevant log file
                     sd = f"{logDate[0]}/{logDate[1]}/{logDate[2]}"
                     date = datetime.datetime.now().strftime("%d-%m-%Y")
-                    time = datetime.datetime.now().strftime("%H-%M-%S")
+                    time = datetime.datetime.now().strftime("%H:%M:%S")
                     action = f"Downloaded logs from date {sd}"
                     logAction(date, time, user, action)
                     return send_from_directory(logFileDir, fname_str, as_attachment=True)
@@ -499,14 +505,14 @@ def getLogs(user):
                     #Logging to relevant log file
                     sd = f"{logDate[0]}/{logDate[1]}/{logDate[2]}"
                     date = datetime.datetime.now().strftime("%d-%m-%Y")
-                    time = datetime.datetime.now().strftime("%H-%M-%S")
+                    time = datetime.datetime.now().strftime("%H:%M:%S")
                     action = f"Failed request for logs from date {sd} - no logs found"
                     logAction(date, time, user, action)
-                    return render_template(f"front/logexport.html", message="File not found", user=user)
+                    return render_template(f"front/logexport.html", message="File not found", user=user, data=files)
         else:
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
-            time = datetime.datetime.now().strftime("%H-%M-%S")
+            time = datetime.datetime.now().strftime("%H:%M:%S")
             action = "Attempted pulling log files as student"
             logAction(date, time, user, action)
             return render_template("front/confirmation.html", message="Unauthorized user for this action - STUDENT", user=user)
@@ -526,7 +532,7 @@ def logout(user):
         
         #Logging to relevant log file
         date = datetime.datetime.now().strftime("%d-%m-%Y")
-        time = datetime.datetime.now().strftime("%H-%M-%S")
+        time = datetime.datetime.now().strftime("%H:%M:%S")
         action = "Logged out of BECS"
         logAction(date, time, user, action)
 
@@ -547,7 +553,7 @@ def redirect(user, page):
 
         #Logging to relevant log file
         date = datetime.datetime.now().strftime("%d-%m-%Y")
-        time = datetime.datetime.now().strftime("%H-%M-%S")
+        time = datetime.datetime.now().strftime("%H:%M:%S")
         action = f"Redirected to page {page}"
         logAction(date, time, user, action)
 
@@ -558,6 +564,16 @@ def redirect(user, page):
                 decoded = json.load(data)
             userData = decoded[user]
             return render_template(f"front/user.html", user=user, data=userData)
+        elif page == "logexport.html":
+            files = []
+            logFileDir = becs.root_path+'/logfiles/'
+            directory = os.fsencode(logFileDir)
+            for fname in os.listdir(directory):
+                fname_str = os.fsdecode(fname)
+                files.append(fname_str)
+            
+            return render_template(f"front/logexport.html", user=user, data=files)
+
         else:
             return render_template(f"front/{page}", user=user)
     else:
@@ -571,4 +587,5 @@ def signupPage():
 #Runner
 
 if __name__ == "__main__":
+    check.run()
     becs.run(debug=True, host="0.0.0.0", port="5000")

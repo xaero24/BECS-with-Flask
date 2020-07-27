@@ -73,11 +73,22 @@
 
     <div id="body">
         <br><br><br><br>
-        <b style="font-size: 24pt;">Log exports</b>
+        <h3>Log exports</h3>
         <br><br>
 
         <div id="mainp">
-
+            <h4>Available files:</h4>
+            <br>
+            <table>
+                {% for file in data %}
+                <tr class="tablecontent">
+                    <td>
+                        <li>{{file}} </li>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
             <form action="http://localhost:5000/api/{{user}}/get_logs" method="POST">
                 Log Export Date: <br>
                 <input type="text" name="s_day" placeholder="DD" size="2" maxlength="2">
