@@ -1,10 +1,13 @@
 from flask import Flask, request, render_template, send_from_directory
 import data.blood as becsClass
-import data.checkExpDate as check
+import data.checkExpDate as checker
+import data.populator as populator
 import json
 from csv import reader, writer
 import datetime
 import os
+import threading
+import sys
 
 becs = Flask(__name__)
 bloodbank = becsClass.BECS()
@@ -28,37 +31,24 @@ def loggedIn(userName):
     return False
 
 #Determination of time elapsed since last action
-def elapsedBool(times): #Change this to a simpler chaeck using datetime.time()
-    currTime = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S").split("-")
+def elapsedBool(times):
+    currTime = datetime.datetime.now()
+
+    d = int(times[0])
+    m = int(times[1])
+    y = int(times[2])
+    hr = int(times[3])
+    mn = int(times[4])
+    sc = int(times[5])
+    last = datetime.datetime(day=d, month=m, year=y, hour=hr, minute=mn, second=sc)
+
+    dayDiff = (currTime-last).days
     
-    #Months or yeasrs apart is too much apart
-    if currTime[1] != times[1] or currTime[2] != times[2]:
+    if dayDiff == 0:
+        return True
+    else:
         return False
 
-    #Two days apart and up
-    if int(currTime[0]) - int(times[0]) > 1:
-        return False
-    
-    #Adjacent days
-    elif int(currTime[0]) - int(times[0]) == 1:
-        if int(times[3]) - int(currTime[3]) > 1:
-            return True #Less than 24 hours elapsed
-        elif int(times[3]) == int(currTime[3]):
-            if int(times[4]) - int(currTime[4]) > 1:
-                return True #Same hours, so minutes are checked
-            elif int(times[4]) == int(currTime[4]):
-                if int(times[5]) - int(currTime[5]) >=0:
-                    return True #Same hours and minutes, so seconds are checked
-                else:
-                    return False
-            else:
-                return False
-        else:
-            return False
-    
-    #Same day is always OK - That's the last option
-    else:
-        return True
 
 #Check if a user is student, regula user or administrator
 def isStudent(user):
@@ -587,4 +577,11 @@ def signupPage():
 #Runner
 
 if __name__ == "__main__":
+    if len(sys.argv) == 2 and sys.argv[1] == "-f":
+        populator.populate()
+    else:
+        populator.setEmpty()
+    
+    x = threading.Thread(target=checker.run, args=(1,))
+    x.start()
     becs.run(debug=True, host="0.0.0.0", port="5000")
