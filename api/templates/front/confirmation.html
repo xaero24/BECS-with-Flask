@@ -78,12 +78,24 @@
                 <tr>
                     <td colspan="2">&nbsp;</td>
                 </tr>
-                {% for key, value in message[2].items() %}
+                {% for key, value in message[2][0].items() %}
                 <tr class="tablecontent">
                     <td> {{key}} </td>
                     <td> {{value}} </td>
                 </tr>
-                {% endfor %}
+                {% endfor %} {% if message[2][2] == 'False' %}
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr class="tablecontent">
+                    <td colspan="2">Blood types with no donors:</td>
+                </tr>
+                {% for key, value in message[2][1].items() %}
+                <tr class="tablecontent">
+                    <td> {{key}} </td>
+                    <td> {{value}} </td>
+                </tr>
+                {% endfor %} {% endif %}
             </table>
 
         </div>
