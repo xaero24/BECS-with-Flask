@@ -5,7 +5,7 @@ from datetime import datetime
 
 def findLastFrozenID():
     retval = 0
-    with open("api/data/frozenPacks.json", "r") as packs:
+    with open("data/frozenPacks.json", "r") as packs:
         frozen = json.load(packs)
     for packID in frozen.keys():
         retval = int(packID)
@@ -21,13 +21,13 @@ def check():
     m = int(today.split("-")[1])
     y = int(today.split("-")[2])
     print("Checking refrigerators for nearly-expired (30day+) packs...")
-    with open("api/data/cooledPacks.json", "r") as packs:
+    with open("data/cooledPacks.json", "r") as packs:
         cooled = json.load(packs)
 
-    with open("api/data/frozenPacks.json", "r") as packs:
+    with open("data/frozenPacks.json", "r") as packs:
         frozen = json.load(packs)
 
-    with open("api/data/counts.json", "r") as packs:
+    with open("data/counts.json", "r") as packs:
         counts = json.load(packs)
         
     for packID, pack in cooled.items():
@@ -57,13 +57,13 @@ def check():
     else:
         print("No packs were moved today.")
 
-    with open("api/data/cooledPacks.json", "w") as packs:
+    with open("data/cooledPacks.json", "w") as packs:
         json.dump(cooled, packs)
 
-    with open("api/data/frozenPacks.json", "w") as packs:
+    with open("data/frozenPacks.json", "w") as packs:
         json.dump(frozen, packs)
 
-    with open("api/data/counts.json", "w") as packs:
+    with open("data/counts.json", "w") as packs:
         json.dump(counts, packs)
 
 def run():

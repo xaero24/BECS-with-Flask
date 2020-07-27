@@ -587,5 +587,4 @@ def signupPage():
 #Runner
 
 if __name__ == "__main__":
-    check.run()
     becs.run(debug=True, host="0.0.0.0", port="5000")
