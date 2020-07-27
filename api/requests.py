@@ -178,7 +178,7 @@ def getPortions(user):
             abm = ("AB-", int(request.form["abm"]))
             data = (ap, op, bp, abp, am ,om ,bm ,abm)
             res = bloodbank.massWithdrawal(data) #receives a triple of pulled, unpulled and bool of whether a partial pull was performed
-            if res[2] == False:
+            if res[2] == "False":
                 msg = f"Successfully pulled the following packs and amounts:"
             else:
                 msg = "Some types have no donors. Pullled packs:"

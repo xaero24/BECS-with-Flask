@@ -37,7 +37,7 @@ Then, in the project root open the terminal and run:
 $ docker build -t becs:latest .
 $ docker run -p 5000:5000 becs:latest
 ```
-After that, the URL for the website (and the inventory) is:
+After that, the URL for the website login page is:
 ```
 http://0.0.0.0:5000/
 ```
@@ -53,7 +53,7 @@ http://34.89.179.147:5000/
 - [ ] Implement NGINX server instead of flask redirects.
 - [ ] Move to external database.
 - [X] Create better layout of components in pages.
-- [ ] Add time stamps to blood packs.
+- [X] Add time stamps to blood packs.
 - [X] Add better checks and correct responses for various cases.
 - [ ] Maybe switch to PHP components?
 - [X] Add table page with all blood types and pack counts.
