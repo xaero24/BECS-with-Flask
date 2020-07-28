@@ -20,14 +20,15 @@ def loggedIn(userName):
     
     if userName in decoded.keys():
         lastAction = decoded[userName]["last_action"] 
-        timeList = lastAction.split("-")
-        if(elapsedBool(timeList) == True):
-            if decoded[userName]["logged_in"] == True:
-                return True
-        else:
-            decoded[userName]["logged_in"] = False
-            with open(file, 'w') as data:
-                json.dump(decoded, data)
+        if lastAction != "":
+            timeList = lastAction.split("-")
+            if(elapsedBool(timeList) == True):
+                if decoded[userName]["logged_in"] == True:
+                    return True
+            else:
+                decoded[userName]["logged_in"] = False
+                with open(file, 'w') as data:
+                    json.dump(decoded, data)
     return False
 
 #Determination of time elapsed since last action

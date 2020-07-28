@@ -4,23 +4,19 @@
 <head>
     <title>Welcome</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script>
-        // Automatic Slideshow - change image every 4 seconds
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
+        // Used for encryption of password into MD5
+        function encrypt() {
+            var pass = document.getElementById('password').value;
+            if (pass == "") {
+                return true;
+            } else {
+                var hash = CryptoJS.MD5(pass);
+                document.getElementById('password').value = hash;
+                return true;
             }
-            myIndex++;
-            if (myIndex > x.length) {
-                myIndex = 1
-            }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 4000);
         }
 
         // Used to toggle the menu on small screens when clicking on the menu button
@@ -82,10 +78,10 @@
                 <input type="text" name="lname" placeholder="{{ data['last_name'] }}"><br>
                 <input type="text" name="id" placeholder="{{ data['id'] }}"><br>
                 <input type="text" name="title" placeholder="{{ data['title'] }}"><br>
-                <input type="text" name="pass" placeholder="New password"><br>
+                <input type="password" name="pass" id="password" placeholder="New password"><br>
                 <input type="text" name="email" placeholder="{{ data['email'] }}"><br>
                 <p style="font-size: 16pt;">status: {{ data['status'] }}</p>
-                <button type="submit">Update deails</button>
+                <button type="submit" onclick="return encrypt()">Update deails</button>
             </form>
             {% if data['status']=='admin' %}
             <hr> {{ message }} <br><br>

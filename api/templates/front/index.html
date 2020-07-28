@@ -4,23 +4,20 @@
 <head>
     <title>Welcome</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script>
-        // Automatic Slideshow - change image every 4 seconds
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
+        // Used for encryption of password into MD5
+        function encrypt() {
+            var pass = document.getElementById('password').value;
+            if (pass == "") {
+                document.getElementById('err').innerHTML = 'Error:Password is missing';
+                return false;
+            } else {
+                var hash = CryptoJS.MD5(pass);
+                document.getElementById('password').value = hash;
+                return true;
             }
-            myIndex++;
-            if (myIndex > x.length) {
-                myIndex = 1
-            }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 4000);
         }
 
         // Used to toggle the menu on small screens when clicking on the menu button
@@ -69,8 +66,9 @@
             </p>
             <form action="http://localhost:5000/api/login" method="POST">
                 <input type="text" id="id" name="id" placeholder="ID"> <br>
-                <input type="password" id="pass" name="pass" placeholder="Password"> <br><br>
-                <button type="submit">Log in</button>
+                <input type="password" id="password" name="pass" placeholder="Password"> <br><br>
+                <div style="color:red" id="err"></div>
+                <button type="submit" onclick="return encrypt()">Log in</button>
             </form>
             <br>
             <a href="http://localhost:5000/signup.html" style="font-size: 16px; color: blue; padding-left: 0pt;">

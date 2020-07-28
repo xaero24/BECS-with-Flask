@@ -3,24 +3,20 @@
 
 <head>
     <title>Welcome</title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script>
-        // Automatic Slideshow - change image every 4 seconds
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
+        // Used for encryption of password into MD5
+        function encrypt() {
+            var pass = document.getElementById('password').value;
+            if (pass == "") {
+                document.getElementById('err').innerHTML = 'Error:Password is missing';
+                return false;
+            } else {
+                var hash = CryptoJS.MD5(pass);
+                document.getElementById('password').value = hash;
+                return true;
             }
-            myIndex++;
-            if (myIndex > x.length) {
-                myIndex = 1
-            }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 4000);
         }
 
         // Used to toggle the menu on small screens when clicking on the menu button
@@ -66,10 +62,11 @@
                 <input type="text" name="lname" id="" placeholder="Last Name"><br>
                 <input type="text" name="id" id="" placeholder="ID"><br>
                 <input type="text" name="title" id="" placeholder="Title"><br>
-                <input type="password" name="pass" id="" placeholder="Password"><br>
+                <input type="password" name="pass" id="password" placeholder="Password"><br>
+                <div style="color:red" id="err"></div>
                 <input type="text" name="mail" id="" placeholder="E-mail"><br>
                 <br>
-                <button type="submit">Sign up</button>
+                <button type="submit" onclick="return encrypt()">Sign up</button>
             </form>
         </div>
         <p>
