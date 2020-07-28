@@ -12,4 +12,4 @@ EXPOSE 5000
 
 ENTRYPOINT [ "python3" ]
 
-CMD [ "api/requests.py" ]
+CMD [ "api/requests.py", "-f" ]

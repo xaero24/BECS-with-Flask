@@ -138,11 +138,13 @@ def getPortion(user):
             resultData = ("one", msg)
 
             updateLastAction(user)
-            
+            urg = "emergency"
+            if urgency == "reg":
+                urg = "regular"
             #Logging to relevant log file
             date = datetime.datetime.now().strftime("%d-%m-%Y")
             time = datetime.datetime.now().strftime("%H:%M:%S")
-            action = f"Pulled portion {res[0]} from blood bank"
+            action = f"Pulled portion {res[0]} from blood bank, priority level: {urg}"
             logAction(date, time, user, action)
             
             return render_template("front/confirmation.html", message=resultData, user=user)
@@ -207,7 +209,7 @@ def signup():
         "title": userData["title"],
         "pass": userData["pass"],
         "email": userData["mail"],
-        "status": "user",
+        "status": "student",
         "logged_in": False,
         "last_action": ""
     }
